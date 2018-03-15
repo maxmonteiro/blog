@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Definindo grupo de rotas com middleware
+Route::middleware(['auth'])->prefix('admin')->namespace('Admin')->group(function () {
+    Route::resource('artigos', 'ArtigosController');
+});
