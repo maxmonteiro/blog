@@ -1,7 +1,12 @@
 <template>
     <div>
-        <a v-if="criar" v-bind:href="criar">Criar</a>
-
+        <div class="form-line">
+            <a v-if="criar" v-bind:href="criar">Criar</a>
+            <div class="form-group pull-right">
+                <input type="search" class="form-control" placeholder="Buscar"
+                v-model="buscar">
+            </div>
+        </div>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -11,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item,index) in itens">
+                <tr v-for="(item,index) in lista">
                     <td v-for="i in item">{{i}}</td>
                     <td v-if="detalhe || editar || deletar">
                         <form v-bind:id="index" v-if="deletar && token" v-bind:action="deletar" method="post">
@@ -44,6 +49,28 @@
 <script>
     export default {
         props:['titulos','itens','criar','detalhe','editar','deletar','token'],
+        data: function() {
+            return {
+                buscar: ''
+            }
+        },
+        // Métodos computados
+        computed: {
+            lista: function() {
+                //let busca = "php";
+                return this.itens.filter(res => {
+                    for (let k = 0; k < res.length; k++) {
+                        // posicao 1 = titulo
+                        // indexOf retorna um valor negativo se nao encontrar nada
+                        if(String(res[k]).toLowerCase().indexOf(this.buscar.toLowerCase()) >= 0) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+                return this.itens;
+            }
+        },
         // criando método de exclusão
         methods:{
             executaForm: function(index){
