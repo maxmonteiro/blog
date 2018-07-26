@@ -38,11 +38,13 @@
             <formulario css="" action="#" method="post" ecntype="" token="12345">
                 <div class="form-group">
                     <label for="titulo">Título</label>
-                    <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título">
+                    <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título"
+                    v-model="$store.state.item.titulo">
                 </div>
                 <div class="form-group">
                     <label for="descricao">Descrição</label>
-                    <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição">
+                    <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição"
+                    v-model="$store.state.item.descricao">
                 </div>
                 <button class="btn btn-info">Atualizar</button>
             </formulario>

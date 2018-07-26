@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="form-line">
-            <p>{{this.$store.state.itens}}</p>
+            <!--<p>{{this.$store.state.itens}}</p>-->
             <a v-if="criar && !modal" v-bind:href="criar">Criar</a>
             <modal-link v-if="criar && modal" tipo="button" nome="adicionar" titulo="Criar" css=""></modal-link>
             <div class="form-group pull-right">
@@ -28,7 +28,7 @@
                             <input type="hidden" name="_token" v-bind:value="token">
                             <a v-if="detalhe" v-bind:href="detalhe">Detalhe |</a>
                             <a v-if="editar && !modal" v-bind:href="editar">Editar |</a>
-                                <modal-link v-if="editar && modal" tipo="link" nome="editar" titulo="Editar |" css=""></modal-link>
+                                <modal-link v-if="editar && modal" v-bind:item="item" tipo="link" nome="editar" titulo="Editar |" css=""></modal-link>
                             <a v-if="deletar" v-bind:href="deletar">Deletar</a>
                             <!-- submetendo o form com javascript -->
                             <a href="#" v-on:click="executaForm(index)"></a>
@@ -66,7 +66,7 @@
             lista: function() {
 
                 // Atualizando store do vuex
-                this.$store.commit('setItens',{teste: 'teste'});
+                //this.$store.commit('setItens',{teste: 'teste'});
 
 
                 let ordem = this.ordemAux;
