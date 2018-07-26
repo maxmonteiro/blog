@@ -45218,6 +45218,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.buscar) {
                 //let busca = "php";
                 return this.itens.filter(function (res) {
+                    res = Object.values(res);
                     for (var k = 0; k < res.length; k++) {
                         // posicao 1 = titulo
                         // indexOf retorna um valor negativo se nao encontrar nada

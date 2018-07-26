@@ -104,6 +104,7 @@
                 if(this.buscar) {
                     //let busca = "php";
                     return this.itens.filter(res => {
+                        res = Object.values(res);
                         for (let k = 0; k < res.length; k++) {
                             // posicao 1 = titulo
                             // indexOf retorna um valor negativo se nao encontrar nada
