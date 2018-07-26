@@ -3,14 +3,14 @@
 @section('content')
     <pagina tamanho="10">
         <painel titulo="Lista de Artigos">
-            <migalhas v-bind:lista="{{$listaMigalhas}}"></migalhas>
+            <migalhas v-bind:lista="{{ $listaMigalhas }}"></migalhas>
 
             <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#meuModalTeste">Large modal</button>-->
             <modal-link tipo="buttons" nome="meuModalTeste" titulo="Criar" css=""></modal-link>
 
             <tabela-lista 
                 v-bind:titulos="['#','Título','Descrição']"
-                v-bind:itens="[[1,'PHP OO','Curso de PHP'],[2,'Vue JS','Curso de Vue JS'],[3,'Java OO','Curso de Java']]"
+                v-bind:itens="{{ $listaArtigos }}"
                 ordem="desc" ordemcol="1"
                 criar="#criar" detalhe="#detalhe" editar="#editar" deletar="#deletar" token="615431566">
             </tabela-lista>

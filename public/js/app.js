@@ -44210,37 +44210,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (ordem == "asc") {
                 this.itens.sort(function (a, b) {
-                    if (a[ordemCol] > b[ordemCol]) {
+                    // Object.values retorna um array com os itens do objeto passado como parametro
+                    if (Object.values(a)[ordemCol] > Object.values(b)[ordemCol]) {
                         return 1;
                     }
-                    if (a[ordemCol] < b[ordemCol]) {
+                    if (Object.values(a)[ordemCol] < Object.values(b)[ordemCol]) {
                         return -1;
                     }
                     return 0;
                 });
             } else {
                 this.itens.sort(function (a, b) {
-                    if (a[ordemCol] < b[ordemCol]) {
+                    if (Object.values(a)[ordemCol] < Object.values(b)[ordemCol]) {
                         return 1;
                     }
-                    if (a[ordemCol] > b[ordemCol]) {
+                    if (Object.values(a)[ordemCol] > Object.values(b)[ordemCol]) {
                         return -1;
                     }
                     return 0;
                 });
             }
 
-            //let busca = "php";
-            return this.itens.filter(function (res) {
-                for (var k = 0; k < res.length; k++) {
-                    // posicao 1 = titulo
-                    // indexOf retorna um valor negativo se nao encontrar nada
-                    if (String(res[k]).toLowerCase().indexOf(_this.buscar.toLowerCase()) >= 0) {
-                        return true;
+            if (this.buscar) {
+                //let busca = "php";
+                return this.itens.filter(function (res) {
+                    for (var k = 0; k < res.length; k++) {
+                        // posicao 1 = titulo
+                        // indexOf retorna um valor negativo se nao encontrar nada
+                        if (String(res[k]).toLowerCase().indexOf(_this.buscar.toLowerCase()) >= 0) {
+                            return true;
+                        }
                     }
-                }
-                return false;
-            });
+                    return false;
+                });
+            }
+
             return this.itens;
         }
     },
