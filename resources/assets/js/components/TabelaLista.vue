@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="form-line">
+            <p>{{this.$store.state.itens}}</p>
             <a v-if="criar && !modal" v-bind:href="criar">Criar</a>
             <modal-link v-if="criar && modal" tipo="button" nome="adicionar" titulo="Criar" css=""></modal-link>
             <div class="form-group pull-right">
@@ -63,6 +64,10 @@
         // Métodos computados
         computed: {
             lista: function() {
+
+                // Atualizando store do vuex
+                this.$store.commit('setItens',{teste: 'teste'});
+
 
                 let ordem = this.ordemAux;
                 let ordemCol = this.ordemAuxCol;
