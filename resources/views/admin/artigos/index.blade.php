@@ -9,7 +9,7 @@
             
 
             <tabela-lista 
-                v-bind:titulos="['#','Título','Descrição']"
+                v-bind:titulos="['#','Título','Descrição','Data']"
                 v-bind:itens="{{ $listaArtigos }}"
                 ordem="desc" ordemcol="1"
                 criar="#criar" detalhe="#detalhe" editar="#editar" deletar="#deletar" token="615431566" modal="sim">
@@ -19,7 +19,7 @@
 
     <!-- Modal component -->
     <modal nome="adicionar" titulo="Adicionar">
-        <formulario id="formAdicionar" css="" action="#" method="post" ecntype="" token="12345">
+        <formulario id="formAdicionar" css="" action="{{route('artigos.store')}}" method="post" ecntype="" token="{{csrf_token()}}">
             <div class="form-group">
                 <label for="titulo">Título</label>
                 <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título">
@@ -27,6 +27,14 @@
             <div class="form-group">
                 <label for="descricao">Descrição</label>
                 <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição">
+            </div>
+            <div class="form-group">
+                <label for="conteudo">Conteúdo</label>
+                <textarea class="form-control" id="conteudo" name="conteudo"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="data">Data</label>
+                <input type="datetime-local" class="form-control" id="data" name="data">
             </div>
         </formulario>
         <span slot="botoes">
