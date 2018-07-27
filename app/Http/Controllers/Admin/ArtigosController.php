@@ -82,7 +82,7 @@ class ArtigosController extends Controller
      */
     public function show($id)
     {
-        //
+        return Artigo::find($id);
     }
 
     /**
